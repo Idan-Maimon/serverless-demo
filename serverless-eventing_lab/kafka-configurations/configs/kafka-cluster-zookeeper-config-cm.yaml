@@ -1,0 +1,29 @@
+apiVersion: v1
+data:
+  log4j.properties: |
+    # Do not change this generated file. Logging can be configured in the corresponding Kubernetes resource.
+    log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
+    log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
+    log4j.appender.CONSOLE.layout.ConversionPattern=%d{ISO8601} %p %m (%c) [%t]%n
+    zookeeper.root.logger=INFO
+    log4j.rootLogger=${zookeeper.root.logger}, CONSOLE
+  zookeeper.node-count: "3"
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: kafka-cluster
+    app.kubernetes.io/managed-by: strimzi-cluster-operator
+    app.kubernetes.io/name: zookeeper
+    app.kubernetes.io/part-of: strimzi-kafka-cluster
+    strimzi.io/cluster: kafka-cluster
+    strimzi.io/kind: Kafka
+    strimzi.io/name: strimzi
+  name: kafka-cluster-zookeeper-config
+  namespace: kafka
+  ownerReferences:
+  - apiVersion: kafka.strimzi.io/v1beta2
+    blockOwnerDeletion: false
+    controller: false
+    kind: Kafka
+    name: kafka-cluster
+    uid: cc41f7a8-6217-411a-982d-4c10d9de478c

@@ -1,0 +1,14 @@
+apiVersion: sources.knative.dev/v1beta2
+kind: PingSource
+metadata:
+  name: ping-event-producer
+  namespace: knative-demo
+spec:
+  data: '{value: “my-ping-data”}'
+  schedule: '* * * * *'
+  sink:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: event-consumer
+      namespace: knative-demo

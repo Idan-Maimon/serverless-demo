@@ -1,0 +1,16 @@
+name: test
+namespace: ""
+runtime: node
+image: quay.io/imaymon/serverless:v1.0.0
+imageDigest: sha256:8341ac6e3463228d8b6fbc087af02ccd8fb10ad29e1e1d7ca1b9af9dda96aef9
+builder: quay.io/boson/faas-nodejs-builder:v0.8.4
+builderMap:
+  default: quay.io/boson/faas-nodejs-builder:v0.8.4
+volumes: []
+envs:
+- name: MESSAGE
+  value: '"Hello from local"'
+- value: '{{ configMap:funccm }}'
+annotations: {}
+options: {}
+labels: []

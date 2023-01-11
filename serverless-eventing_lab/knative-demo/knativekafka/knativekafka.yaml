@@ -1,0 +1,13 @@
+apiVersion: operator.serverless.openshift.io/v1alpha1
+kind: KnativeKafka
+metadata:
+  name: knative-kafka
+  namespace: knative-eventing
+spec:
+  channel:
+    authSecretName: ''
+    authSecretNamespace: ''
+    bootstrapServers: 'kafka-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092'
+    enabled: true
+  source:
+    enabled: true
